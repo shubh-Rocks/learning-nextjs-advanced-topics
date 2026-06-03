@@ -7,8 +7,8 @@ import { Role, User } from "@prisma/client";
 const SALT_ROUNDS = 12;
 const JWT_SECRET = process.env.JWT_SECRET!;
 
-export const hashPassword = async (Password: string): Promise<String> => {
-  return bcrypt.hash(Password, SALT_ROUNDS);
+export const hashPassword = async (password: string): Promise<string> => {
+  return bcrypt.hash(password, SALT_ROUNDS);
 };
 
 export const verifyPassword = async (
@@ -26,7 +26,7 @@ export const verifyToken = (token: string): { userId: string } | null => {
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     return decoded as { userId: string };
-  } catch (error) {
+  } catch {
     return null;
   }
 };
@@ -42,7 +42,8 @@ export const getCurrentUser = async (): Promise<User | null> => {
       where: { id: decode?.userId },
     });
     if (!userFromDb) return null;
-    const { password, ...user } = userFromDb;
+    const user = { ...userFromDb };
+    delete (user as Partial<User>).password;
     return user as User;
   } catch (error) {
     console.error("error:", error);

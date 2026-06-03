@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 7,
     });
     return response;
-  } catch (error) {
+  } catch {
     console.error("registrtion failed");
     return NextResponse.json(
       {
