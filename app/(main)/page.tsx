@@ -27,16 +27,19 @@ const Home = async () => {
           <h3 className="font-semibold mb-3 text-white">User Roles</h3>
           <ul className="list-disc list-inside space-y-1 text-sm text-slate-300">
             <li>
-              <strong>Super Admin:</strong>Full system Access
+              <strong className="text-purple-400">Super Admin:</strong>Full
+              system Access
             </li>
             <li>
-              <strong>Admin:</strong> User & team management{" "}
+              <strong className="text-red-400">Admin:</strong> User & team
+              management{" "}
             </li>
             <li>
-              <strong>Manager:</strong> Team specific management
+              <strong className="text-blue-400">Manager:</strong> Team specific
+              management
             </li>
             <li>
-              <strong>User:</strong> Basic dasboard
+              <strong className="text-green-400">User:</strong> Basic dasboard
             </li>
           </ul>
         </div>
@@ -55,10 +58,22 @@ const Home = async () => {
           </Link>
         </div>
       ) : (
-        <div className="bg-green-900/30 border-green-600 rounded-lg p-4 ">
-          <p className="text-green-300 mb-3">
-            Wellcome back,<strong>Shubh</strong>! you are logged in as
-          </p>
+        <div className="bg-blue-900/30 border-green-600 rounded-lg p-4 ">
+          <p className="text-slate-300 mb-3">You are logged in.</p>
+          <div className="space-x-4">
+            <Link
+              href="/login"
+              className="inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded-sm "
+            >
+              Login
+            </Link>
+            <Link
+              href="/register"
+              className="inline-block mt-3 px-4 py-2 border border-amber-50 rounded-sm text-white "
+            >
+              Register
+            </Link>
+          </div>
         </div>
       )}
     </div>
