@@ -67,7 +67,7 @@ class ApiClient {
       body: JSON.stringify({ role }),
     });
   }
-  
+
   async assignUserteam(userId: string, teamId: string) {
     return this.request(`/api/users/${userId}/team`, {
       method: "PATCH",
@@ -75,3 +75,5 @@ class ApiClient {
     });
   }
 }
+
+export const apiClient = new ApiClient();

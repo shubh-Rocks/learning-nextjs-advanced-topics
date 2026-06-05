@@ -24,3 +24,10 @@ export interface Team {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface AuthContextType {
+  user: User | null;
+  login: (formData: FormData) => void;
+  logout: () => void;
+  hashPermission: (requiredRole: Role) => boolean;
+}
