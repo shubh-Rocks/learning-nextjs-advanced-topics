@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@/app/provider/AuthProvider";
 import { User } from "@prisma/client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,8 +10,7 @@ interface HeaderProps {
 
 const Header = ({ user }: HeaderProps) => {
   const pathName = usePathname();
-  const user1 = false;
-
+  const { logout } = useAuth();
   const navigation = [
     { name: "home", href: "/", show: true },
     { name: "Dashboard", href: "/dashboard", show: true },
@@ -47,11 +47,14 @@ const Header = ({ user }: HeaderProps) => {
             </Link>
           ))}
         </nav>
-        <div className=" flex items-center space-x-4">
-          {user1 ? (
+        <div className=" flex items-center space-x-4 p-3">
+          {user ? (
             <>
-              <span className="text-sm text-slate-300 "> shubh user</span>
-              <button className="px-3 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-700 transition-colors">
+              <span className="text-lg text-slate-300 "> {user.name} {user.role}</span>
+              <button
+                onClick={logout}
+                className="px-3 py-2 bg-red-500 text-white text-sm rounded hover:bg-red-700 transition-colors"
+              >
                 Logout
               </button>
             </>

@@ -52,13 +52,12 @@ const AdminDashboard = ({ users, teams, currentUser }: AdminDashboardPage) => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold mb-2 text-white ">
-          {" "}
-          Admin Dashboard
-        </h1>
+        <h1 className="text-2xl font-bold mb-2 text-white ">Admin Dashboard</h1>
         <p className="text-slate-300  ">user and team Management </p>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
+
+        {/* Users table with role and team assingment */}
         <div className="bg-slate-800 border border-slate-700 rounded-lg">
           <div className="p-4 border-b border-slate-700 ">
             <h3 className="font-semibold text-white">User({users.length})</h3>
@@ -142,13 +141,11 @@ const AdminDashboard = ({ users, teams, currentUser }: AdminDashboardPage) => {
             </table>
           </div>
         </div>
-
+        {/* {team table} */}
         <div className="bg-slate-800 border border-slate-700 rounded-lg">
           <div className="p-4 border-b border-slate-700 ">
             <h3 className="font-semibold text-white">Team({teams.length})</h3>
-            <p className="text-slate-400 text-sm ">
-              Team Overview
-            </p>
+            <p className="text-slate-400 text-sm ">Team Overview</p>
           </div>
           <div className="p-4">
             <table className="w-full text-sm">
@@ -161,10 +158,74 @@ const AdminDashboard = ({ users, teams, currentUser }: AdminDashboardPage) => {
                 </tr>
               </thead>
               <tbody>
-                {teams.map}
+                {teams.map((team) => {
+                  const teamMembers = users.filter(
+                    (user) => user.teamId === team.id,
+                  );
+                  const teamManagers = teamMembers.filter(
+                    (user) => user.role === Role.MANAGER,
+                  );
+
+                  return (
+                    <tr key={team.id} className="border-b border-slate-700">
+                      <td className="py-2 text-slate-300">{team.name}</td>
+                      <td className="py-2 text-slate-300">{team.code}</td>
+                      <td className="py-2 text-slate-300">
+                        {teamMembers.length} users
+                      </td>
+                      <td className="py-2 text-slate-300">
+                        {teamManagers.length > 0 ? (
+                          <div className="flex flex-wrap gap-1 w ">
+                            {teamManagers.map((manager) => (
+                              <span
+                                key={manager.id}
+                                title={manager.name}
+                                className="bg-blue-500/20 px-2 py-1 rounded text-xs text-slate-500"
+                              >
+                                {manager.name}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="text-slate-500 text-xs">
+                            No Manager
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div className="bg-slate-800 border-slate-700 rounded-lg p-4 text-center">
+          <div className=" text-2xl font-bold text-white">{users.length}</div>
+          <div className=" text-slate-400 text-sm>Total"> Users</div>
+        </div>
+        <div className="bg-slate-800 border-slate-700 rounded-lg p-4 text-center">
+          <div className=" text-2xl font-bold text-white">
+            {users.filter((a) => a.role === Role.ADMIN).length}
+          </div>
+          <div className=" text-slate-400 text-sm>Total"> Admin</div>
+        </div>
+        <div className="bg-slate-800 border-slate-700 rounded-lg p-4 text-center">
+          <div className=" text-2xl font-bold text-white">
+            {users.filter((m) => m.role === Role.MANAGER).length}
+          </div>
+          <div className=" text-slate-400 text-sm>Total"> Managers</div>
+        </div>
+        <div className="bg-slate-800 border-slate-700 rounded-lg p-4 text-center">
+          <div className=" text-2xl font-bold text-white">
+            {users.filter((u) => u.role === Role.USER).length}
+          </div>
+          <div className=" text-slate-400 text-sm>Total">Users</div>
+        </div>
+        <div className="bg-slate-800 border-slate-700 rounded-lg p-4 text-center">
+          <div className=" text-2xl font-bold text-white">{teams.length}</div>
+          <div className=" text-slate-400 text-sm>Total">Teams</div>
         </div>
       </div>
     </div>
