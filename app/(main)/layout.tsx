@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import { apiClient } from "../lib/api.Client";
 
 const MainLayout = async ({ children }: { children: React.ReactNode }) => {

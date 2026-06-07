@@ -1,5 +1,7 @@
+import AdminDashboard from "@/app/components/dashboard/AdminDashboard";
 import { checkUserPermission, getCurrentUser } from "@/app/lib/auth";
 import prisma from "@/app/lib/prisma";
+import { transformTeams, transformUsers } from "@/app/lib/utils";
 import { Role } from "@prisma/client";
 import { redirect } from "next/navigation";
 
@@ -9,7 +11,7 @@ const AdminPage = async () => {
   if (!user || !checkUserPermission(user, Role.ADMIN)) {
     redirect("/Unauthorized");
   }
-  
+
   //    Fetch data for admin dashboard
   const [prismaUsers, prismaTeams] = await Promise.all([
     prisma.user.findMany({
@@ -35,14 +37,9 @@ const AdminPage = async () => {
       },
     }),
   ]);
-
-  return (
-    <AdminDashboard
-      users={prismaUsers}
-      teams={prismaTeams}
-      currentUser={user}
-    />
-  );
+  const users = transformUsers(prismaUsers);
+  const teams = transformTeams(prismaTeams);
+  return <AdminDashboard users={users} teams={teams} currentUser={user} />;
 };
 
 export default AdminPage;

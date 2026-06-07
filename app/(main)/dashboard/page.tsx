@@ -10,11 +10,11 @@ const DashboardLayout = async () => {
 
   switch (user.role) {
     case Role.ADMIN:
-      redirect("/dasboard/admin");
+      redirect("/dashboard/admin");
     case Role.MANAGER:
-      redirect("/dasboard/manager");
+      redirect("/dashboard/manager");
     case Role.USER:
-      redirect("/dasboard/user");
+      redirect("/dashboard/user");
 
     default:
       break;

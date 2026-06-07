@@ -21,6 +21,7 @@ export interface Team {
   description?: string | null;
   code: string;
   members: User[];
+
   createdAt: Date;
   updatedAt: Date;
 }

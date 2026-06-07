@@ -21,6 +21,7 @@ const UserPage = async () => {
           name: true,
           email: true,
           role: true,
+          team: true,
         },
       })
     : [];
