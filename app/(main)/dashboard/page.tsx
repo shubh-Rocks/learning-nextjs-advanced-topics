@@ -17,7 +17,7 @@ const DashboardLayout = async () => {
       redirect("/dashboard/user");
 
     default:
-      break;
+      redirect("/login");
   }
 };
 

@@ -11,7 +11,7 @@
 
 ## 🚀 Live Demo
 
-🔗 [View Live App](https://your-app.vercel.app) &nbsp;|&nbsp; 📸 [Screenshots](#-screenshots)
+🔗 [View Live App](https://your-app.vercel.app) &nbsp;|&nbsp; 
 
 ---
 

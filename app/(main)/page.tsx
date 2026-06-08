@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { getCurrentUser } from "../lib/auth";
 
 const Home = async () => {
-  const user = false;
+  const user = await getCurrentUser();
   return (
     <div className="max-w-4xl mx-auto  ">
       <h1 className="text-3xl font-bold mb-6"> team Access Control demo</h1>
@@ -32,7 +33,7 @@ const Home = async () => {
             </li>
             <li>
               <strong className="text-red-400">Admin:</strong> User & team
-              management{" "}
+              management
             </li>
             <li>
               <strong className="text-blue-400">Manager:</strong> Team specific
@@ -47,8 +48,8 @@ const Home = async () => {
       {user ? (
         <div className="bg-green-900/30 border-green-600 rounded-lg p-4">
           <p className="text-green-300">
-            Wellcome back,<strong>Shubh</strong>! you are logged in as
-            <strong className="text-green-200">USER</strong>
+            Wellcome back,<strong>{user.name}</strong>! you are logged in as {""}
+            <strong className="text-green-200 ">{user.role}</strong>
           </p>
           <Link
             href="/dashboard"

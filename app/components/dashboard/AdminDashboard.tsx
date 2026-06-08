@@ -19,7 +19,7 @@ const AdminDashboard = ({ users, teams, currentUser }: AdminDashboardPage) => {
   ) => {
     startTransition(async () => {
       try {
-        await apiClient.assignUserteam(userId, teamId ?? "");
+        await apiClient.assignUserteam(userId, teamId || null);
         window.location.reload();
       } catch (error) {
         alert(
@@ -118,9 +118,9 @@ const AdminDashboard = ({ users, teams, currentUser }: AdminDashboardPage) => {
                           </option>
                         ))}
                       </select>
-                      {user.team && (
+                      {user.teamId && (
                         <span className="text-xs text-slate-500">
-                          {user.team.code}
+                          {teams.find((t) => t.id === user.teamId)?.code}
                         </span>
                       )}
                     </td>

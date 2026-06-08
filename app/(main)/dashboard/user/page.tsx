@@ -22,7 +22,10 @@ const UserPage = async () => {
           name: true,
           email: true,
           role: true,
-          team: true,
+          password: true,
+          teamId: true,
+          createdAt: true,
+          updatedAt: true,
         },
       })
     : [];
