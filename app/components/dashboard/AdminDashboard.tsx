@@ -1,7 +1,8 @@
 "use client";
 
 import { apiClient } from "@/app/lib/api.Client";
-import { Role, Team, User } from "@prisma/client";
+import { Role } from "@/app/generated/prisma/enums";
+import type { Team, User } from "@prisma/client";
 import { useTransition } from "react";
 
 interface AdminDashboardPage {
