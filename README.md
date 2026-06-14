@@ -259,8 +259,8 @@ const { user, login, logout } = useAuth();
 
 | Method   | Endpoint             | Description       | Auth Required |
 | -------- | -------------------- | ----------------- | ------------- |
-| `POST`   | `/api/auth/register` | Register new user | ❌            |
-| `POST`   | `/api/auth/login`    | Login user        | ❌            |
+| `POST`   | `/api/auth/register` | Register new user | ✅            |
+| `POST`   | `/api/auth/login`    | Login user        | ✅            |
 | `POST`   | `/api/auth/logout`   | Logout user       | ✅            |
 | `GET`    | `/api/projects`      | Get all projects  | ✅            |
 | `POST`   | `/api/projects`      | Create a project  | ✅            |
