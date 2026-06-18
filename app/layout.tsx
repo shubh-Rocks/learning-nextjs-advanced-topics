@@ -14,7 +14,9 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) 
+
+{
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-slate-950 text-slate justify-center items-center">
