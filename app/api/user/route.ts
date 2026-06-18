@@ -1,4 +1,5 @@
-import { Prisma, Role } from "@/app/generated/prisma/client";
+import { Prisma } from "@prisma/client";
+import { Role } from "@prisma/client";
 import { getCurrentUser } from "@/app/lib/auth";
 import prisma from "@/app/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
