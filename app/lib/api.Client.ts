@@ -1,4 +1,5 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
+
 class ApiClient {
   private baseUrl: string;
 
@@ -7,6 +8,7 @@ class ApiClient {
   }
 
   async request(endpoint: string, options: RequestInit = {}) {
+    // Ab ye banega: "" + "/api/auth/register" = "/api/auth/register"
     const url = `${this.baseUrl}${endpoint}`;
     const config: RequestInit = {
       headers: {
@@ -21,20 +23,23 @@ class ApiClient {
     if (response.status === 401) {
       return null;
     }
+
+    // Yahan maine minor fix kiya hai: return response.json() miss ho raha tha success ke case mein
     if (!response.ok) {
       const error = await response.json().catch(() => ({
         error: "Network error",
       }));
       throw new Error(error.error || "Request failed");
     }
+
+    return response.json(); // ✅ Added this so your components actually get the data!
   }
 
   // Auth Methods
-
   async register(userData: unknown) {
     return this.request("/api/auth/register", {
       method: "POST",
-      body: JSON.stringify( userData ),
+      body: JSON.stringify(userData),
     });
   }
 
