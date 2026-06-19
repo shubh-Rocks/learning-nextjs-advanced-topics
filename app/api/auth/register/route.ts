@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         teamId,
       },
       include: {
-        Team: true,
+        team: true,
       },
     });
 
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         name: user.name,
         role: user.role,
         teamId: user.teamId,
-        team: user.Team,
+        team: user.team,
         token,
       },
     });

@@ -53,7 +53,7 @@ export async function PATCH(
         role,
       },
       include: {
-        Team: true,
+        team: true,
       },
     });
 
