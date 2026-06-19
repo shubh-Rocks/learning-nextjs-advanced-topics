@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { getCurrentUser } from "../lib/auth";
 const Home = async () => {
