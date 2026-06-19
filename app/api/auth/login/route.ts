@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     // find existing user
     const userfromDb = await prisma.user.findFirst({
       where: { email },
-      include: { Team: true },
+      include: { team: true },
     });
 
     if (!userfromDb) {
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
         name: userfromDb.name,
         role: userfromDb.role,
         teamId: userfromDb.teamId,
-        team: userfromDb.Team,
+        team: userfromDb.team,
         token,
       },
     });
