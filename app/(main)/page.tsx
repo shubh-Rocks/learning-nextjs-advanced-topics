@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getCurrentUser } from "../lib/auth";
-
+export const dynamic = "force-dynamic";
 const Home = async () => {
   const user = await getCurrentUser();
   return (
@@ -48,7 +48,8 @@ const Home = async () => {
       {user ? (
         <div className="bg-green-900/30 border-green-600 rounded-lg p-4">
           <p className="text-green-300">
-            Wellcome back,<strong>{user.name}</strong>! you are logged in as {""}
+            Wellcome back,<strong>{user.name}</strong>! you are logged in as{" "}
+            {""}
             <strong className="text-green-200 ">{user.role}</strong>
           </p>
           <Link

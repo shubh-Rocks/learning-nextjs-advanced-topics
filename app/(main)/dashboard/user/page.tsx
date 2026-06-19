@@ -4,6 +4,7 @@ import prisma from "@/app/lib/prisma";
 import { User } from "@prisma/client";
 import { redirect } from "next/navigation";
 
+
 const UserPage = async () => {
   const user = await getCurrentUser();
 
