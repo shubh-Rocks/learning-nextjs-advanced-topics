@@ -1,5 +1,3 @@
-"use client";
-
 import UserDashboard from "@/app/components/dashboard/UserDashboard";
 import { getCurrentUser } from "@/app/lib/auth";
 import prisma from "@/app/lib/prisma";

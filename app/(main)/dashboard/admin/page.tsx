@@ -1,4 +1,3 @@
-  "use client"
 import AdminDashboard from "@/app/components/dashboard/AdminDashboard";
 import { checkUserPermission, getCurrentUser } from "@/app/lib/auth";
 import prisma from "@/app/lib/prisma";

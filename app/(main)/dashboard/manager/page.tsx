@@ -1,4 +1,3 @@
-"use client ";
 import MangerDashboard from "@/app/components/dashboard/MangerDashboard";
 import { checkUserPermission, getCurrentUser } from "@/app/lib/auth";
 import prisma from "@/app/lib/prisma";
