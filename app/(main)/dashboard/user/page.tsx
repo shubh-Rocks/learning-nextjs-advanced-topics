@@ -1,9 +1,10 @@
+"use client";
+
 import UserDashboard from "@/app/components/dashboard/UserDashboard";
 import { getCurrentUser } from "@/app/lib/auth";
 import prisma from "@/app/lib/prisma";
 import { User } from "@prisma/client";
 import { redirect } from "next/navigation";
-
 
 const UserPage = async () => {
   const user = await getCurrentUser();
